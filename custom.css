@@ -91,11 +91,29 @@
 }
 
 /* =======================
-   MOBILE FIX
+   MOBILE FIX — Banner'ı sabit dikdörtgen orana kilitle
+   Hedef oran: 882x686 (Messi banner'ı gibi).
+   Daha GENİŞ/kısa istersen sadece aspect-ratio'yu 882/392 yap.
 ======================= */
 @media (max-width: 768px) {
+  [data-mj="widget-banner-link"] {
+    display: block !important;
+    width: 100% !important;
+    line-height: 0 !important;
+  }
+
   [data-mj="widget-banner-link"] img {
-    height: 100% !important;
+    display: block !important;
+    width: 100% !important;
+    height: auto !important;
+    aspect-ratio: 882 / 686 !important;
+    object-fit: cover !important;
+  }
+
+  [data-mj="widget-banner"],
+  [data-mj="widget-banner-slider"],
+  [data-mj="widget-banner-item"] {
+    height: auto !important;
   }
 }
 
