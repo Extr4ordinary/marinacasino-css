@@ -43,15 +43,19 @@
   min-width: 0 !important;
 }
 
-/* ORDER — Soldan sağa: CANLI CASİNO · CASİNO · ANA SAYFA · SPOR · CANLI DESTEK */
-[data-mj="bottom-nav"] .app-ltr-idt7iu .app-ltr-ja3k2i > a[href="/tr/livecasino"]          { order: 1 !important; } /* CANLI CASİNO */
-[data-mj="bottom-nav"] .app-ltr-idt7iu .app-ltr-ja3k2i > a[href="/tr/casino"]              { order: 2 !important; } /* CASİNO */
-[data-mj="bottom-nav"] .app-ltr-idt7iu .app-ltr-ja3k2i > a[href="/tr/"]                     { order: 3 !important; } /* ANA SAYFA (orta) */
-[data-mj="bottom-nav"] .app-ltr-idt7iu .app-ltr-ja3k2i > a[href="/tr/sport/demo"]          { order: 4 !important; } /* SPOR */
-[data-mj="bottom-nav"] .app-ltr-idt7iu .app-ltr-ja3k2i > span[data-mj="bottom-nav-item"]   { order: 5 !important; } /* CANLI DESTEK */
+/* ORDER — İKON koduna göre sıralama (login/logout fark etmez; href değişse bile bozulmaz)
+   Soldan sağa: CANLI CASİNO · CASİNO · ANA SAYFA · SPOR · CANLI DESTEK
+   İkon kodları:
+     CANLI CASİNO = b56598da | CASİNO = 8c4b3e90 | ANA SAYFA = 9f1f77ca
+     SPOR = c1e60002        | CANLI DESTEK = e4c0aa2d */
+[data-mj="bottom-nav"] .app-ltr-idt7iu .app-ltr-ja3k2i > [data-mj="bottom-nav-item"]:has(span[style*="b56598da"]) { order: 1 !important; } /* CANLI CASİNO */
+[data-mj="bottom-nav"] .app-ltr-idt7iu .app-ltr-ja3k2i > [data-mj="bottom-nav-item"]:has(span[style*="8c4b3e90"]) { order: 2 !important; } /* CASİNO */
+[data-mj="bottom-nav"] .app-ltr-idt7iu .app-ltr-ja3k2i > [data-mj="bottom-nav-item"]:has(span[style*="9f1f77ca"]) { order: 3 !important; } /* ANA SAYFA */
+[data-mj="bottom-nav"] .app-ltr-idt7iu .app-ltr-ja3k2i > [data-mj="bottom-nav-item"]:has(span[style*="c1e60002"]) { order: 4 !important; } /* SPOR */
+[data-mj="bottom-nav"] .app-ltr-idt7iu .app-ltr-ja3k2i > [data-mj="bottom-nav-item"]:has(span[style*="e4c0aa2d"]) { order: 5 !important; } /* CANLI DESTEK */
 
-/* ACTIVE ITEM — ANA SAYFA (orta, büyük buton) */
-[data-mj="bottom-nav"] .app-ltr-idt7iu .app-ltr-ja3k2i > a[href="/tr/"] {
+/* ACTIVE ITEM — ANA SAYFA (orta, büyük buton) — ikon koduna göre */
+[data-mj="bottom-nav"] .app-ltr-idt7iu .app-ltr-ja3k2i > [data-mj="bottom-nav-item"]:has(span[style*="9f1f77ca"]) {
   color: #FFFFFF !important;
   font-size: 8px !important;
   line-height: 8px !important;
@@ -78,9 +82,9 @@
   z-index: 10 !important;
 }
 
-/* ACTIVE STATE */
-[data-mj="bottom-nav"] .app-ltr-idt7iu .app-ltr-ja3k2i > a[href="/tr/"].active-link,
-[data-mj="bottom-nav"] .app-ltr-idt7iu .app-ltr-ja3k2i > a[href="/tr/"][aria-current="page"] {
+/* ACTIVE STATE — ANA SAYFA aktif sayfadayken (ikon koduna göre) */
+[data-mj="bottom-nav"] .app-ltr-idt7iu .app-ltr-ja3k2i > [data-mj="bottom-nav-item"]:has(span[style*="9f1f77ca"]).active-link,
+[data-mj="bottom-nav"] .app-ltr-idt7iu .app-ltr-ja3k2i > [data-mj="bottom-nav-item"]:has(span[style*="9f1f77ca"])[aria-current="page"] {
   filter: brightness(1.08) saturate(1.08) !important;
 }
 
@@ -91,34 +95,11 @@
 }
 
 /* =======================
-   MOBILE FIX — Banner yüksekliği (geniş/kısa şerit)
-   Platform yüksekliği link'in padding-top'u ile veriyor; onu eziyoruz.
-   Oran → padding-top:  882:392 = 44.44%  |  882:490 = 55.56%  |  882:686 = 77.78%
-   Daha UZUN istersen padding-top'u büyüt, daha KISA istersen küçült.
+   MOBILE FIX
 ======================= */
 @media (max-width: 768px) {
-  [data-mj="widget-banner-link"] {
-    display: block !important;
-    position: relative !important;
-    width: 100% !important;
-    height: 0 !important;
-    padding-top: 44.44% !important;   /* ← oranı buradan ayarla */
-  }
-
   [data-mj="widget-banner-link"] img {
-    position: absolute !important;
-    top: 0 !important;
-    left: 0 !important;
-    width: 100% !important;
     height: 100% !important;
-    object-fit: cover !important;
-  }
-
-  [data-mj="widget-banner-container"],
-  [data-mj="widget-banner"],
-  [data-mj="widget-banner-slider"],
-  [data-mj="widget-banner-item"] {
-    height: auto !important;
   }
 }
 
