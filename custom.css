@@ -96,9 +96,6 @@
 
 /* =======================
    MOBILE FIX — Banner: doğal orana SIKIŞTIR (gerginliği düzeltir + kısaltır)
-   Platform görseli 882x686'ya germiş; orijinal 1186x845 = doğal oran 1.40.
-   object-fit:fill ile 882:628 kutuya basınca germe geri alınır, banner ~58px kısalır.
-   GÖRSELLERİ DEĞİŞTİRMEYE GEREK YOK. (Doğal oran 71.25%; altına inince tekrar gerilir.)
 ======================= */
 @media (max-width: 768px) {
   [data-mj="widget-banner-link"] {
@@ -106,7 +103,7 @@
     position: relative !important;
     width: 100% !important;
     height: 0 !important;
-    padding-top: 71.25% !important;   /* 628/882 = doğal oran (≈ senin 625) */
+    padding-top: 71.25% !important;
     overflow: hidden !important;
   }
 
@@ -116,7 +113,7 @@
     left: 0 !important;
     width: 100% !important;
     height: 100% !important;
-    object-fit: fill !important;       /* dikey sıkıştırma → platformun germesini geri alır */
+    object-fit: fill !important;
   }
 
   [data-mj="widget-banner-container"],
@@ -124,6 +121,44 @@
   [data-mj="widget-banner-slider"],
   [data-mj="widget-banner-item"] {
     height: auto !important;
+  }
+}
+
+/* =======================
+   KATEGORİ (Pages) — dikey kartlar: masaüstü 5 / mobil 3
+   object-fit:fill → platform görseli 16:9'a gerse bile dikey orana geri çevirir.
+======================= */
+[data-mj="widget-pages"] [data-mj="widget-pages-grid"] {
+  display: grid !important;
+  grid-template-columns: repeat(5, 1fr) !important;   /* MASAÜSTÜ: 5 yan yana */
+  gap: 10px !important;
+  align-items: start !important;
+}
+
+[data-mj="widget-pages"] [data-mj="widget-pages-item"],
+[data-mj="widget-pages"] [data-mj="widget-pages-item"] > div,
+[data-mj="widget-pages"] [data-mj="widget-pages-item"] > div > div,
+[data-mj="widget-pages"] [data-mj="widget-pages-item"] a {
+  display: block !important;
+  width: 100% !important;
+  height: auto !important;
+  margin: 0 !important;
+}
+
+[data-mj="widget-pages"] [data-mj="widget-pages-item"] img {
+  display: block !important;
+  width: 100% !important;
+  height: auto !important;
+  aspect-ratio: 886 / 1100 !important;
+  object-fit: fill !important;
+  border-radius: 12px !important;
+}
+
+/* MOBİL: 3 yan yana */
+@media (max-width: 768px) {
+  [data-mj="widget-pages"] [data-mj="widget-pages-grid"] {
+    grid-template-columns: repeat(3, 1fr) !important;
+    gap: 8px !important;
   }
 }
 
