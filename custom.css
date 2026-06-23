@@ -237,8 +237,15 @@ aside a,
   background-position: center center !important;
   background-repeat: no-repeat !important;
   background-size: cover !important;
-  filter: blur(1px) !important;
-  transform: scale(1.01) !important;
+  pointer-events: none !important;
+}
+
+body::after {
+  content: "" !important;
+  position: fixed !important;
+  inset: 0 !important;
+  z-index: 0 !important;
+  background: rgba(0, 8, 28, 0.28) !important;
   pointer-events: none !important;
 }
 
