@@ -245,7 +245,7 @@ body::after {
   position: fixed !important;
   inset: 0 !important;
   z-index: 0 !important;
-  background: rgba(0, 8, 28, 0.28) !important;
+  background: rgba(0, 8, 28, 0.35) !important;
   pointer-events: none !important;
 }
 
