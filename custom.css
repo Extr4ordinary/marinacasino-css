@@ -136,14 +136,20 @@
 }
 
 @media (max-width: 768px) {
+  [data-mj="widget-pages"] [data-mj="widget-pages-container"] {
+    padding-left: 6px !important;
+    padding-right: 6px !important;
+  }
   [data-mj="widget-pages"] [data-mj="widget-pages-grid"] {
     grid-template-columns: repeat(3, 1fr) !important;
-    gap: 8px !important;
+    gap: 6px !important;
   }
   [data-mj="widget-pages"] [data-mj="widget-pages-item"]:nth-child(n+4) {
     display: none !important;
   }
-}
+  [data-mj="widget-pages"] [data-mj="widget-pages-item"]:nth-child(1) { order: 1 !important; }
+  [data-mj="widget-pages"] [data-mj="widget-pages-item"]:nth-child(3) { order: 2 !important; }
+  [data-mj="widget-pages"] [data-mj="widget-pages-item"]:nth-child(2) { order: 3 !important; }
 }
 
 footer,
