@@ -229,25 +229,25 @@ aside a,
   }
 
   body::before {
-  content: "" !important;
-  position: fixed !important;
-  inset: 0 !important;
-  z-index: 0 !important;
-  background-image: url("https://cdn.jsdelivr.net/gh/Extr4ordinary/marinacasino-css@main/web-skin.webp") !important;
-  background-position: center center !important;
-  background-repeat: no-repeat !important;
-  background-size: cover !important;
-  pointer-events: none !important;
-}
+    content: "" !important;
+    position: fixed !important;
+    inset: 0 !important;
+    z-index: 0 !important;
+    background-image: url("https://cdn.jsdelivr.net/gh/Extr4ordinary/marinacasino-css@main/web-skin.webp") !important;
+    background-position: center center !important;
+    background-repeat: no-repeat !important;
+    background-size: cover !important;
+    pointer-events: none !important;
+  }
 
-body::after {
-  content: "" !important;
-  position: fixed !important;
-  inset: 0 !important;
-  z-index: 0 !important;
-  background: rgba(0, 8, 28, 0.45) !important;
-  pointer-events: none !important;
-}
+  body::after {
+    content: "" !important;
+    position: fixed !important;
+    inset: 0 !important;
+    z-index: 0 !important;
+    background: rgba(0, 8, 28, 0.45) !important;
+    pointer-events: none !important;
+  }
 
   [data-mj="root-layout"],
   [data-mj="page-content"] {
@@ -273,5 +273,57 @@ body::after {
     max-width: 1500px !important;
     margin-left: auto !important;
     margin-right: auto !important;
+  }
+}
+
+@media (max-width: 999px) {
+  html,
+  body {
+    background-color: #0a1428 !important;
+  }
+
+  body {
+    position: relative !important;
+    z-index: 0 !important;
+  }
+
+  body::before {
+    content: "" !important;
+    position: fixed !important;
+    inset: 0 !important;
+    z-index: 0 !important;
+    background-image: url("./mobile-skin.webp") !important;
+    background-position: center center !important;
+    background-repeat: no-repeat !important;
+    background-size: 100% 100% !important;
+    pointer-events: none !important;
+  }
+
+  body::after {
+    content: "" !important;
+    position: fixed !important;
+    inset: 0 !important;
+    z-index: 0 !important;
+    background: rgba(0, 8, 28, 0.35) !important;
+    pointer-events: none !important;
+  }
+
+  [data-mj="root-layout"],
+  [data-mj="page-content"] {
+    position: relative !important;
+    z-index: 1 !important;
+    background: transparent !important;
+  }
+
+  [data-mj="widget-banner-container"],
+  [data-mj="widget-banner"],
+  [data-mj="widget-banner-slider"],
+  [data-mj="widget-banner-item"],
+  [data-mj="widget-banner-link"] {
+    background: transparent !important;
+  }
+
+  footer {
+    background-color: transparent !important;
   }
 }
