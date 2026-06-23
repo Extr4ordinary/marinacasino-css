@@ -229,16 +229,18 @@ aside a,
   }
 
   body::before {
-    content: "" !important;
-    position: fixed !important;
-    inset: 0 !important;
-    z-index: 0 !important;
-    background-image: url("https://cdn.jsdelivr.net/gh/Extr4ordinary/marinacasino-css@main/web-skin.webp") !important;
-    background-position: center center !important;
-    background-repeat: no-repeat !important;
-    background-size: cover !important;
-    pointer-events: none !important;
-  }
+  content: "" !important;
+  position: fixed !important;
+  inset: 0 !important;
+  z-index: 0 !important;
+  background-image: url("https://cdn.jsdelivr.net/gh/Extr4ordinary/marinacasino-css@main/web-skin.webp") !important;
+  background-position: center center !important;
+  background-repeat: no-repeat !important;
+  background-size: cover !important;
+  filter: blur(2px) !important;
+  transform: scale(1.02) !important;
+  pointer-events: none !important;
+}
 
   [data-mj="root-layout"],
   [data-mj="page-content"] {
