@@ -232,7 +232,8 @@ aside a,
   footer {
     background-color: transparent !important;
   }
-  [data-mj="page-content"] {
+  [data-mj="page-content"],
+  [data-mj="widget-banner-container"] {
     max-width: 1500px !important;
     margin-left: auto !important;
     margin-right: auto !important;
