@@ -323,16 +323,16 @@ aside a,
     background: transparent !important;
   }
   [data-mj="social-links"] a[href*="t.me"] {
-  width: 64px !important;
-  height: 64px !important;
+  width: 52px !important;
+  height: 52px !important;
   display: inline-flex !important;
   align-items: center !important;
   justify-content: center !important;
 }
 
 [data-mj="social-links"] a[href*="t.me"] img {
-  width: 64px !important;
-  height: 64px !important;
+  width: 52px !important;
+  height: 52px !important;
   max-width: none !important;
   max-height: none !important;
   object-fit: contain !important;
