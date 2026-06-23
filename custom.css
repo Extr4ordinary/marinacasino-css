@@ -209,3 +209,20 @@ aside a,
 .side-menu a {
   font-size: 13px !important;
 }
+
+
+@media (min-width: 1000px) {
+  body {
+    background-image: url("https://cdn.jsdelivr.net/gh/Extr4ordinary/marinacasino-css@main/web-skin.webp") !important;
+    background-position: center top !important;
+    background-repeat: no-repeat !important;
+    background-attachment: fixed !important;
+    background-size: cover !important;
+    background-color: #0a1428 !important;
+  }
+  [data-mj="page-content"] {
+    max-width: 1500px !important;
+    margin-left: auto !important;
+    margin-right: auto !important;
+  }
+}
