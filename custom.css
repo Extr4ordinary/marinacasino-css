@@ -295,7 +295,7 @@ aside a,
     background-image: url("./mobile-skin.webp") !important;
     background-position: center center !important;
     background-repeat: no-repeat !important;
-    background-size: 100% 100% !important;
+    background-size: cover !important;
     pointer-events: none !important;
   }
 
@@ -304,7 +304,7 @@ aside a,
     position: fixed !important;
     inset: 0 !important;
     z-index: 0 !important;
-    background: rgba(0, 8, 28, 0.35) !important;
+    background: rgba(0, 8, 28, 0.50) !important;
     pointer-events: none !important;
   }
 
