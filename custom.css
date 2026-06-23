@@ -80,6 +80,30 @@
   -webkit-mask: none !important;
 }
 
+@media (min-width: 769px) {
+  [data-mj="widget-banner-container"],
+  [data-mj="widget-banner"],
+  [data-mj="widget-banner-slider"],
+  [data-mj="widget-banner-item"] {
+    height: auto !important;
+    min-height: 0 !important;
+  }
+  [data-mj="widget-banner-link"] {
+    display: block !important;
+    position: relative !important;
+    width: 100% !important;
+    height: auto !important;
+    aspect-ratio: 3000 / 1090 !important;
+    overflow: hidden !important;
+  }
+  [data-mj="widget-banner-link"] img {
+    display: block !important;
+    width: 100% !important;
+    height: 100% !important;
+    object-fit: fill !important;
+  }
+}
+
 @media (max-width: 768px) {
   [data-mj="widget-banner-link"] {
     display: block !important;
