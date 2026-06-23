@@ -237,8 +237,8 @@ aside a,
   background-position: center center !important;
   background-repeat: no-repeat !important;
   background-size: cover !important;
-  filter: blur(2px) !important;
-  transform: scale(1.02) !important;
+  filter: blur(1px) !important;
+  transform: scale(1.01) !important;
   pointer-events: none !important;
 }
 
