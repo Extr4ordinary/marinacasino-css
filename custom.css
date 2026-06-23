@@ -88,6 +88,7 @@
     height: auto !important;
     min-height: 0 !important;
   }
+
   [data-mj="widget-banner-link"] {
     display: block !important;
     position: relative !important;
@@ -96,6 +97,7 @@
     aspect-ratio: 3000 / 1090 !important;
     overflow: hidden !important;
   }
+
   [data-mj="widget-banner-link"] img {
     display: block !important;
     width: 100% !important;
@@ -113,6 +115,7 @@
     padding-top: 71.25% !important;
     overflow: hidden !important;
   }
+
   [data-mj="widget-banner-link"] img {
     position: absolute !important;
     top: 0 !important;
@@ -121,6 +124,7 @@
     height: 100% !important;
     object-fit: fill !important;
   }
+
   [data-mj="widget-banner-container"],
   [data-mj="widget-banner"],
   [data-mj="widget-banner-slider"],
@@ -176,13 +180,16 @@
     padding-left: 6px !important;
     padding-right: 6px !important;
   }
+
   [data-mj="widget-pages"] [data-mj="widget-pages-grid"] {
     grid-template-columns: repeat(3, 1fr) !important;
     gap: 6px !important;
   }
+
   [data-mj="widget-pages"] [data-mj="widget-pages-item"]:nth-child(n+4) {
     display: none !important;
   }
+
   [data-mj="widget-pages"] [data-mj="widget-pages-item"]:nth-child(1) { order: 1 !important; }
   [data-mj="widget-pages"] [data-mj="widget-pages-item"]:nth-child(3) { order: 2 !important; }
   [data-mj="widget-pages"] [data-mj="widget-pages-item"]:nth-child(2) { order: 3 !important; }
@@ -210,28 +217,48 @@ aside a,
   font-size: 13px !important;
 }
 
-
 @media (min-width: 1000px) {
+  html,
+  body {
+    background-color: #0a1428 !important;
+  }
+
+  body {
+    position: relative !important;
+    z-index: 0 !important;
+  }
+
   body::before {
     content: "" !important;
     position: fixed !important;
-    top: 0 !important;
-    left: 0 !important;
-    width: 100% !important;
-    height: 100% !important;
-    z-index: -1 !important;
+    inset: 0 !important;
+    z-index: 0 !important;
     background-image: url("https://cdn.jsdelivr.net/gh/Extr4ordinary/marinacasino-css@main/web-skin.webp") !important;
     background-position: center center !important;
     background-repeat: no-repeat !important;
     background-size: cover !important;
     pointer-events: none !important;
   }
-  body {
-    background-color: #0a1428 !important;
+
+  [data-mj="root-layout"],
+  [data-mj="page-content"] {
+    position: relative !important;
+    z-index: 1 !important;
+    background: transparent !important;
   }
+
+  [data-mj="widget-banner-container"],
+  [data-mj="widget-banner"],
+  [data-mj="widget-banner-slider"],
+  [data-mj="widget-banner-item"],
+  [data-mj="widget-banner-link"] {
+    background: transparent !important;
+  }
+
   footer {
     background-color: transparent !important;
   }
+
   [data-mj="page-content"],
   [data-mj="widget-banner-container"] {
     max-width: 1500px !important;
