@@ -350,3 +350,265 @@ aside a,
     background-color: transparent !important;
   }
 }
+
+/* =========================================================================
+   iOS LIQUID GLASS NAVIGATION REDESIGN
+   Scope: desktop top nav, "Daha Fazla" dropdown, mobile drawer only.
+   Strategy: visual-only overrides on Mojito (EveryMatrix) selectors.
+   Stable hooks = [data-mj="..."] + structural tags. Hashed app-ltr-* used
+   only where no data-mj exists (drawer panel/backdrop, dropdown portal).
+   No routes / hrefs / handlers / JS touched.
+   ========================================================================= */
+
+/* ---- Glass design tokens (scoped to nav roots, no global leak) ---- */
+[data-mj="header"],
+.app-ltr-rl0abu,
+.app-ltr-pri86d {
+  --glass-bg: rgba(10, 18, 45, 0.58);
+  --glass-bg-2: rgba(29, 42, 78, 0.48);
+  --glass-hover: rgba(255, 255, 255, 0.10);
+  --glass-active: rgba(255, 255, 255, 0.15);
+  --glass-border: rgba(255, 255, 255, 0.14);
+  --glass-border-strong: rgba(255, 255, 255, 0.22);
+  --glass-shadow: 0 18px 50px rgba(0, 0, 0, 0.32);
+  --glass-inset: inset 0 1px 0 rgba(255, 255, 255, 0.15);
+  --glass-radius: 16px;
+  --glass-radius-sm: 11px;
+  --glass-ease: cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+/* =========================================================================
+   DESKTOP â€” floating glass nav bar
+   ========================================================================= */
+[data-mj="header-nav-list"] {
+  background: var(--glass-bg) !important;
+  border: 1px solid var(--glass-border) !important;
+  border-radius: var(--glass-radius) !important;
+  box-shadow: var(--glass-shadow), var(--glass-inset) !important;
+  backdrop-filter: blur(22px) saturate(135%) !important;
+  -webkit-backdrop-filter: blur(22px) saturate(135%) !important;
+  padding: 6px 8px !important;
+  transition: box-shadow 0.2s var(--glass-ease) !important;
+}
+
+[data-mj="header-nav-list"] ul {
+  gap: 4px !important;
+}
+
+/* nav pills (covers normal items + "Daha Fazla" trigger) */
+[data-mj="header-nav-list"] [data-mj="header-nav-item"] > a.sl-navlink,
+[data-mj="header-nav-list"] [data-mj="header-nav-item"] > .sl-navlink {
+  border-radius: var(--glass-radius-sm) !important;
+  border: 1px solid transparent !important;
+  background: transparent !important;
+  padding: 8px 12px !important;
+  white-space: nowrap !important;
+  transition: background 0.2s var(--glass-ease),
+              border-color 0.2s var(--glass-ease),
+              box-shadow 0.2s var(--glass-ease),
+              transform 0.2s var(--glass-ease) !important;
+}
+
+[data-mj="header-nav-list"] [data-mj="header-nav-item"] > .sl-navlink:hover {
+  background: var(--glass-hover) !important;
+  border-color: var(--glass-border) !important;
+  transform: translateY(-1px) !important;
+}
+
+[data-mj="header-nav-list"] [data-mj="header-nav-item"] > .sl-navlink:active,
+[data-mj="header-nav-list"] [data-mj="header-nav-item"] > .sl-navlink.active-link,
+[data-mj="header-nav-list"] [data-mj="header-nav-item"] > .sl-navlink[aria-current="page"] {
+  background: var(--glass-active) !important;
+  border-color: var(--glass-border-strong) !important;
+  box-shadow: var(--glass-inset) !important;
+}
+
+[data-mj="header-nav-list"] [data-mj="header-nav-item"] > .sl-navlink:focus-visible {
+  outline: 2px solid rgba(120, 170, 255, 0.85) !important;
+  outline-offset: 2px !important;
+}
+
+/* normalize icon + label inside pills (icons are mask-image, keep their tint) */
+[data-mj="header-nav-list"] [data-mj="header-nav-item"] .sl-navlink > span:first-child {
+  width: 18px !important;
+  height: 18px !important;
+  flex: 0 0 auto !important;
+}
+[data-mj="header-nav-list"] [data-mj="header-nav-item"] .sl-navlink p {
+  margin: 0 0 0 8px !important;
+  line-height: 1 !important;
+}
+
+/* =========================================================================
+   DESKTOP â€” "Daha Fazla" glass popover (portaled to <body>)
+   ========================================================================= */
+.app-ltr-rl0abu {
+  background: var(--glass-bg) !important;
+  border: 1px solid var(--glass-border) !important;
+  border-radius: var(--glass-radius) !important;
+  box-shadow: var(--glass-shadow), var(--glass-inset) !important;
+  backdrop-filter: blur(22px) saturate(135%) !important;
+  -webkit-backdrop-filter: blur(22px) saturate(135%) !important;
+  padding: 8px !important;
+  max-height: min(70vh, 520px) !important;
+  overflow-y: auto !important;
+  z-index: 1200 !important; /* above hero/banner */
+  animation: glassPop 0.18s var(--glass-ease) both !important;
+}
+
+@keyframes glassPop {
+  from { opacity: 0; transform: translateY(-6px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
+/* rounded interactive rows inside popover */
+.app-ltr-rl0abu [data-mj="header-nav-item"] > .sl-navlink {
+  border-radius: var(--glass-radius-sm) !important;
+  padding: 11px 12px !important;
+  background: transparent !important;
+  border: 1px solid transparent !important;
+  transition: background 0.18s var(--glass-ease),
+              border-color 0.18s var(--glass-ease) !important;
+}
+.app-ltr-rl0abu [data-mj="header-nav-item"] > .sl-navlink:hover {
+  background: var(--glass-hover) !important;
+  border-color: var(--glass-border) !important;
+}
+.app-ltr-rl0abu [data-mj="header-nav-item"] > .sl-navlink:focus-visible {
+  outline: 2px solid rgba(120, 170, 255, 0.85) !important;
+  outline-offset: -2px !important;
+}
+
+/* subtle scrollbar â€” popover */
+.app-ltr-rl0abu { scrollbar-width: thin !important; scrollbar-color: rgba(255,255,255,0.22) transparent !important; }
+.app-ltr-rl0abu::-webkit-scrollbar { width: 6px !important; }
+.app-ltr-rl0abu::-webkit-scrollbar-track { background: transparent !important; }
+.app-ltr-rl0abu::-webkit-scrollbar-thumb { background: rgba(255,255,255,0.22) !important; border-radius: 8px !important; }
+
+/* =========================================================================
+   MOBILE â€” drawer (overlay root .app-ltr-pri86d, panel .app-ltr-exfy0i)
+   ========================================================================= */
+
+/* blurred + darkened page backdrop (first child of overlay root) */
+.app-ltr-pri86d > .app-ltr-1a7d0yc {
+  background: rgba(0, 8, 28, 0.55) !important;
+  backdrop-filter: blur(6px) !important;
+  -webkit-backdrop-filter: blur(6px) !important;
+}
+
+/* glass drawer panel */
+.app-ltr-pri86d .app-ltr-exfy0i {
+  background: var(--glass-bg) !important;
+  border-right: 1px solid var(--glass-border) !important;
+  box-shadow: var(--glass-shadow), var(--glass-inset) !important;
+  backdrop-filter: blur(22px) saturate(135%) !important;
+  -webkit-backdrop-filter: blur(22px) saturate(135%) !important;
+  /* iPhone safe areas */
+  padding-top: env(safe-area-inset-top) !important;
+  padding-bottom: env(safe-area-inset-bottom) !important;
+}
+
+/* keep inner scroll area usable + room so language/socials don't overlap last row */
+.app-ltr-pri86d .app-ltr-1q5mnmx,
+.app-ltr-pri86d .app-ltr-7br5ez {
+  -webkit-overflow-scrolling: touch !important;
+  overscroll-behavior: contain !important;
+}
+
+/* glass rows â€” min 52px touch targets */
+.app-ltr-pri86d nav ul li > div > a.sl-navlink,
+.app-ltr-pri86d nav ul li a.sl-navlink {
+  min-height: 52px !important;
+  border-radius: 12px !important;
+  background: var(--glass-bg-2) !important;
+  border: 1px solid var(--glass-border) !important;
+  transition: background 0.18s var(--glass-ease),
+              border-color 0.18s var(--glass-ease) !important;
+}
+.app-ltr-pri86d nav ul li a.sl-navlink:hover,
+.app-ltr-pri86d nav ul li a.sl-navlink:active {
+  background: var(--glass-hover) !important;
+  border-color: var(--glass-border-strong) !important;
+}
+.app-ltr-pri86d nav ul li a.sl-navlink:focus-visible {
+  outline: 2px solid rgba(120, 170, 255, 0.85) !important;
+  outline-offset: -2px !important;
+}
+
+/* submenu expand chevrons â€” align + animate */
+.app-ltr-pri86d button[aria-label="arrow_down"] {
+  transition: transform 0.2s var(--glass-ease) !important;
+}
+
+/* language selector (react-select) -> glass pill */
+.app-ltr-pri86d [class*="sl-select__control"] {
+  background: var(--glass-bg-2) !important;
+  border: 1px solid var(--glass-border) !important;
+  border-radius: 12px !important;
+  min-height: 52px !important;
+  box-shadow: var(--glass-inset) !important;
+}
+.app-ltr-pri86d [class*="sl-select__menu"] {
+  background: var(--glass-bg) !important;
+  border: 1px solid var(--glass-border) !important;
+  border-radius: 12px !important;
+  backdrop-filter: blur(22px) saturate(135%) !important;
+  -webkit-backdrop-filter: blur(22px) saturate(135%) !important;
+}
+
+/* subtle scrollbar â€” drawer scroll containers */
+.app-ltr-pri86d .app-ltr-1q5mnmx,
+.app-ltr-pri86d .app-ltr-7br5ez {
+  scrollbar-width: thin !important;
+  scrollbar-color: rgba(255,255,255,0.22) transparent !important;
+}
+.app-ltr-pri86d .app-ltr-1q5mnmx::-webkit-scrollbar,
+.app-ltr-pri86d .app-ltr-7br5ez::-webkit-scrollbar { width: 6px !important; }
+.app-ltr-pri86d .app-ltr-1q5mnmx::-webkit-scrollbar-track,
+.app-ltr-pri86d .app-ltr-7br5ez::-webkit-scrollbar-track { background: transparent !important; }
+.app-ltr-pri86d .app-ltr-1q5mnmx::-webkit-scrollbar-thumb,
+.app-ltr-pri86d .app-ltr-7br5ez::-webkit-scrollbar-thumb {
+  background: rgba(255,255,255,0.22) !important;
+  border-radius: 8px !important;
+}
+
+/* hamburger / menu trigger -> glass touch target */
+[data-mj="header"] button[aria-label="menu"] {
+  border-radius: 12px !important;
+  border: 1px solid var(--glass-border) !important;
+  background: var(--glass-bg-2) !important;
+  transition: background 0.18s var(--glass-ease) !important;
+}
+[data-mj="header"] button[aria-label="menu"]:hover {
+  background: var(--glass-hover) !important;
+}
+
+/* =========================================================================
+   Fallback â€” browsers without backdrop-filter (use opaque dark glass)
+   ========================================================================= */
+@supports not ((backdrop-filter: blur(1px)) or (-webkit-backdrop-filter: blur(1px))) {
+  [data-mj="header-nav-list"],
+  .app-ltr-rl0abu,
+  .app-ltr-pri86d .app-ltr-exfy0i,
+  .app-ltr-pri86d [class*="sl-select__menu"] {
+    background: rgba(10, 18, 45, 0.96) !important;
+  }
+  .app-ltr-pri86d > .app-ltr-1a7d0yc {
+    background: rgba(0, 8, 28, 0.78) !important;
+  }
+}
+
+/* =========================================================================
+   Reduced motion
+   ========================================================================= */
+@media (prefers-reduced-motion: reduce) {
+  [data-mj="header-nav-list"] .sl-navlink,
+  .app-ltr-rl0abu,
+  .app-ltr-rl0abu .sl-navlink,
+  .app-ltr-pri86d .sl-navlink,
+  .app-ltr-pri86d button[aria-label="arrow_down"],
+  [data-mj="header"] button[aria-label="menu"] {
+    transition: none !important;
+    animation: none !important;
+  }
+}
