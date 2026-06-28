@@ -217,22 +217,6 @@ aside a,
   font-size: 13px !important;
 }
 
-[data-mj="social-links"] a[href*="t.me"] {
-  width: 32px !important;
-  height: 32px !important;
-  display: inline-flex !important;
-  align-items: center !important;
-  justify-content: center !important;
-}
-
-[data-mj="social-links"] a[href*="t.me"] img {
-  width: 32px !important;
-  height: 32px !important;
-  max-width: none !important;
-  max-height: none !important;
-  object-fit: contain !important;
-}
-
 @media (min-width: 1000px) {
   html,
   body {
@@ -353,7 +337,8 @@ aside a,
 
 [data-mj="header"],
 .app-ltr-rl0abu,
-.app-ltr-pri86d {
+.app-ltr-pri86d,
+[data-mj="social-links"] {
   --glass-bg: rgba(10, 18, 45, 0.58);
   --glass-bg-2: rgba(29, 42, 78, 0.48);
   --glass-hover: rgba(255, 255, 255, 0.10);
@@ -595,6 +580,57 @@ aside a,
 }
 [data-mj="header"] button[aria-label="menu"]:hover {
   background: var(--glass-hover) !important;
+}
+
+[data-mj="social-links"] {
+  display: inline-flex !important;
+  align-items: center !important;
+  gap: 16px !important;
+  flex-wrap: nowrap !important;
+  padding: 10px 16px !important;
+  border-radius: 14px !important;
+  border: 1px solid var(--glass-border) !important;
+  background: var(--glass-bg-2) !important;
+  box-shadow: var(--glass-inset) !important;
+  width: -moz-fit-content !important;
+  width: fit-content !important;
+}
+[data-mj="social-links"] > a {
+  flex: 0 0 auto !important;
+  width: auto !important;
+  min-width: 0 !important;
+  height: auto !important;
+  display: inline-flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  border: 0 !important;
+  background: transparent !important;
+  box-shadow: none !important;
+  border-radius: 0 !important;
+  transition: transform 0.18s var(--glass-ease),
+              opacity 0.18s var(--glass-ease) !important;
+}
+[data-mj="social-links"] > a:hover {
+  transform: translateY(-1px) !important;
+  opacity: 0.85 !important;
+}
+[data-mj="social-links"] > a:focus-visible {
+  outline: 2px solid rgba(120, 170, 255, 0.85) !important;
+  outline-offset: 2px !important;
+}
+[data-mj="social-links"] > a img {
+  width: 24px !important;
+  height: 24px !important;
+  max-width: none !important;
+  max-height: none !important;
+  object-fit: contain !important;
+  display: block !important;
+}
+
+.app-ltr-pri86d *:has(> [data-mj="social-links"]) {
+  background: transparent !important;
+  display: flex !important;
+  justify-content: center !important;
 }
 
 @supports not ((backdrop-filter: blur(1px)) or (-webkit-backdrop-filter: blur(1px))) {
