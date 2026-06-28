@@ -495,7 +495,7 @@ aside a,
 
 [data-mj="mobile-nav-list"] ul > li {
   background: transparent !important;
-  margin-bottom: 12px !important;
+  margin-bottom: 8px !important;
 }
 
 [data-mj="mobile-nav-list"] .app-ltr-i6bazn .sl-navlink {
@@ -511,9 +511,21 @@ aside a,
 }
 [data-mj="mobile-nav-list"] .app-ltr-i6bazn .sl-navlink > span:first-child,
 [data-mj="mobile-nav-list"] .app-ltr-i6bazn .sl-navlink i.sl-icon {
-  width: 18px !important;
-  height: 18px !important;
-  font-size: 18px !important;
+  flex: 0 0 20px !important;
+  width: 20px !important;
+  height: 20px !important;
+  min-width: 20px !important;
+  font-size: 20px !important;
+  line-height: 20px !important;
+  -webkit-mask-size: contain !important;
+  mask-size: contain !important;
+  -webkit-mask-position: center !important;
+  mask-position: center !important;
+  -webkit-mask-repeat: no-repeat !important;
+  mask-repeat: no-repeat !important;
+  background-size: contain !important;
+  background-position: center !important;
+  background-repeat: no-repeat !important;
 }
 [data-mj="mobile-nav-list"] .app-ltr-i6bazn .sl-navlink:hover,
 [data-mj="mobile-nav-list"] .app-ltr-i6bazn .sl-navlink:active {
