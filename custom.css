@@ -691,3 +691,13 @@ aside a,
   height: auto !important;
   object-fit: contain !important;
 }
+
+[data-mj="footer-logo"] {
+  width: 216px !important;
+  max-width: 216px !important;
+}
+[data-mj="footer-logo"] img {
+  width: 216px !important;
+  max-width: 216px !important;
+  height: auto !important;
+}
