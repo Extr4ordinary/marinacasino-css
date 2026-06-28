@@ -351,16 +351,6 @@ aside a,
   }
 }
 
-/* =========================================================================
-   iOS LIQUID GLASS NAVIGATION REDESIGN
-   Scope: desktop top nav, "Daha Fazla" dropdown, mobile drawer only.
-   Strategy: visual-only overrides on Mojito (EveryMatrix) selectors.
-   Stable hooks = [data-mj="..."] + structural tags. Hashed app-ltr-* used
-   only where no data-mj exists (drawer panel/backdrop, dropdown portal).
-   No routes / hrefs / handlers / JS touched.
-   ========================================================================= */
-
-/* ---- Glass design tokens (scoped to nav roots, no global leak) ---- */
 [data-mj="header"],
 .app-ltr-rl0abu,
 .app-ltr-pri86d {
@@ -377,9 +367,6 @@ aside a,
   --glass-ease: cubic-bezier(0.22, 1, 0.36, 1);
 }
 
-/* =========================================================================
-   DESKTOP â€” floating glass nav bar
-   ========================================================================= */
 [data-mj="header-nav-list"] {
   background: var(--glass-bg) !important;
   border: 1px solid var(--glass-border) !important;
@@ -395,9 +382,8 @@ aside a,
   gap: 4px !important;
 }
 
-/* nav pills (covers normal items + "Daha Fazla" trigger) */
-[data-mj="header-nav-list"] [data-mj="header-nav-item"] > a.sl-navlink,
-[data-mj="header-nav-list"] [data-mj="header-nav-item"] > .sl-navlink {
+[data-mj="header-nav-list"] [data-mj="header-nav-item"] > .sl-navlink,
+[data-mj="header-nav-list"] > button.sl-navlink {
   border-radius: var(--glass-radius-sm) !important;
   border: 1px solid transparent !important;
   background: transparent !important;
@@ -409,7 +395,8 @@ aside a,
               transform 0.2s var(--glass-ease) !important;
 }
 
-[data-mj="header-nav-list"] [data-mj="header-nav-item"] > .sl-navlink:hover {
+[data-mj="header-nav-list"] [data-mj="header-nav-item"] > .sl-navlink:hover,
+[data-mj="header-nav-list"] > button.sl-navlink:hover {
   background: var(--glass-hover) !important;
   border-color: var(--glass-border) !important;
   transform: translateY(-1px) !important;
@@ -417,18 +404,19 @@ aside a,
 
 [data-mj="header-nav-list"] [data-mj="header-nav-item"] > .sl-navlink:active,
 [data-mj="header-nav-list"] [data-mj="header-nav-item"] > .sl-navlink.active-link,
-[data-mj="header-nav-list"] [data-mj="header-nav-item"] > .sl-navlink[aria-current="page"] {
+[data-mj="header-nav-list"] [data-mj="header-nav-item"] > .sl-navlink[aria-current="page"],
+[data-mj="header-nav-list"] > button.sl-navlink:active {
   background: var(--glass-active) !important;
   border-color: var(--glass-border-strong) !important;
   box-shadow: var(--glass-inset) !important;
 }
 
-[data-mj="header-nav-list"] [data-mj="header-nav-item"] > .sl-navlink:focus-visible {
+[data-mj="header-nav-list"] [data-mj="header-nav-item"] > .sl-navlink:focus-visible,
+[data-mj="header-nav-list"] > button.sl-navlink:focus-visible {
   outline: 2px solid rgba(120, 170, 255, 0.85) !important;
   outline-offset: 2px !important;
 }
 
-/* normalize icon + label inside pills (icons are mask-image, keep their tint) */
 [data-mj="header-nav-list"] [data-mj="header-nav-item"] .sl-navlink > span:first-child {
   width: 18px !important;
   height: 18px !important;
@@ -439,9 +427,6 @@ aside a,
   line-height: 1 !important;
 }
 
-/* =========================================================================
-   DESKTOP â€” "Daha Fazla" glass popover (portaled to <body>)
-   ========================================================================= */
 .app-ltr-rl0abu {
   background: var(--glass-bg) !important;
   border: 1px solid var(--glass-border) !important;
@@ -452,16 +437,15 @@ aside a,
   padding: 8px !important;
   max-height: min(70vh, 520px) !important;
   overflow-y: auto !important;
-  z-index: 1200 !important; /* above hero/banner */
-  animation: glassPop 0.18s var(--glass-ease) both !important;
+  z-index: 1200 !important;
+  animation: glassFade 0.18s var(--glass-ease) both !important;
 }
 
-@keyframes glassPop {
-  from { opacity: 0; transform: translateY(-6px); }
-  to   { opacity: 1; transform: translateY(0); }
+@keyframes glassFade {
+  from { opacity: 0; }
+  to   { opacity: 1; }
 }
 
-/* rounded interactive rows inside popover */
 .app-ltr-rl0abu [data-mj="header-nav-item"] > .sl-navlink {
   border-radius: var(--glass-radius-sm) !important;
   padding: 11px 12px !important;
@@ -479,45 +463,34 @@ aside a,
   outline-offset: -2px !important;
 }
 
-/* subtle scrollbar â€” popover */
 .app-ltr-rl0abu { scrollbar-width: thin !important; scrollbar-color: rgba(255,255,255,0.22) transparent !important; }
 .app-ltr-rl0abu::-webkit-scrollbar { width: 6px !important; }
 .app-ltr-rl0abu::-webkit-scrollbar-track { background: transparent !important; }
 .app-ltr-rl0abu::-webkit-scrollbar-thumb { background: rgba(255,255,255,0.22) !important; border-radius: 8px !important; }
 
-/* =========================================================================
-   MOBILE â€” drawer (overlay root .app-ltr-pri86d, panel .app-ltr-exfy0i)
-   ========================================================================= */
-
-/* blurred + darkened page backdrop (first child of overlay root) */
 .app-ltr-pri86d > .app-ltr-1a7d0yc {
   background: rgba(0, 8, 28, 0.55) !important;
   backdrop-filter: blur(6px) !important;
   -webkit-backdrop-filter: blur(6px) !important;
 }
 
-/* glass drawer panel */
 .app-ltr-pri86d .app-ltr-exfy0i {
   background: var(--glass-bg) !important;
   border-right: 1px solid var(--glass-border) !important;
   box-shadow: var(--glass-shadow), var(--glass-inset) !important;
   backdrop-filter: blur(22px) saturate(135%) !important;
   -webkit-backdrop-filter: blur(22px) saturate(135%) !important;
-  /* iPhone safe areas */
   padding-top: env(safe-area-inset-top) !important;
   padding-bottom: env(safe-area-inset-bottom) !important;
 }
 
-/* keep inner scroll area usable + room so language/socials don't overlap last row */
 .app-ltr-pri86d .app-ltr-1q5mnmx,
 .app-ltr-pri86d .app-ltr-7br5ez {
   -webkit-overflow-scrolling: touch !important;
   overscroll-behavior: contain !important;
 }
 
-/* glass rows â€” min 52px touch targets */
-.app-ltr-pri86d nav ul li > div > a.sl-navlink,
-.app-ltr-pri86d nav ul li a.sl-navlink {
+[data-mj="mobile-nav-list"] .sl-navlink {
   min-height: 52px !important;
   border-radius: 12px !important;
   background: var(--glass-bg-2) !important;
@@ -525,22 +498,56 @@ aside a,
   transition: background 0.18s var(--glass-ease),
               border-color 0.18s var(--glass-ease) !important;
 }
-.app-ltr-pri86d nav ul li a.sl-navlink:hover,
-.app-ltr-pri86d nav ul li a.sl-navlink:active {
+[data-mj="mobile-nav-list"] .sl-navlink:hover,
+[data-mj="mobile-nav-list"] .sl-navlink:active {
   background: var(--glass-hover) !important;
   border-color: var(--glass-border-strong) !important;
 }
-.app-ltr-pri86d nav ul li a.sl-navlink:focus-visible {
+[data-mj="mobile-nav-list"] .sl-navlink:focus-visible {
   outline: 2px solid rgba(120, 170, 255, 0.85) !important;
   outline-offset: -2px !important;
 }
 
-/* submenu expand chevrons â€” align + animate */
-.app-ltr-pri86d button[aria-label="arrow_down"] {
-  transition: transform 0.2s var(--glass-ease) !important;
+[data-mj="mobile-nav-list"] ul > li {
+  background: transparent !important;
 }
 
-/* language selector (react-select) -> glass pill */
+[data-mj="mobile-nav-list"] .app-ltr-i6bazn .sl-navlink {
+  min-height: 42px !important;
+  border-radius: 10px !important;
+  margin-left: 22px !important;
+  margin-right: 8px !important;
+  width: calc(100% - 30px) !important;
+  box-sizing: border-box !important;
+  background: transparent !important;
+  border-color: rgba(255, 255, 255, 0.16) !important;
+  font-size: 13px !important;
+}
+[data-mj="mobile-nav-list"] .app-ltr-i6bazn .sl-navlink > span:first-child,
+[data-mj="mobile-nav-list"] .app-ltr-i6bazn .sl-navlink i.sl-icon {
+  width: 18px !important;
+  height: 18px !important;
+  font-size: 18px !important;
+}
+[data-mj="mobile-nav-list"] .app-ltr-i6bazn .sl-navlink:hover,
+[data-mj="mobile-nav-list"] .app-ltr-i6bazn .sl-navlink:active {
+  background: var(--glass-hover) !important;
+  border-color: var(--glass-border) !important;
+}
+
+.app-ltr-pri86d button[aria-label="arrow_down"] {
+  min-width: 36px !important;
+  min-height: 36px !important;
+  display: inline-flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  border-radius: 10px !important;
+  transition: transform 0.2s var(--glass-ease), background 0.18s var(--glass-ease) !important;
+}
+.app-ltr-pri86d button[aria-label="arrow_down"]:hover {
+  background: var(--glass-hover) !important;
+}
+
 .app-ltr-pri86d [class*="sl-select__control"] {
   background: var(--glass-bg-2) !important;
   border: 1px solid var(--glass-border) !important;
@@ -556,7 +563,6 @@ aside a,
   -webkit-backdrop-filter: blur(22px) saturate(135%) !important;
 }
 
-/* subtle scrollbar â€” drawer scroll containers */
 .app-ltr-pri86d .app-ltr-1q5mnmx,
 .app-ltr-pri86d .app-ltr-7br5ez {
   scrollbar-width: thin !important;
@@ -572,20 +578,25 @@ aside a,
   border-radius: 8px !important;
 }
 
-/* hamburger / menu trigger -> glass touch target */
 [data-mj="header"] button[aria-label="menu"] {
+  width: 44px !important;
+  height: 44px !important;
+  display: inline-flex !important;
+  align-items: center !important;
+  justify-content: center !important;
   border-radius: 12px !important;
   border: 1px solid var(--glass-border) !important;
   background: var(--glass-bg-2) !important;
   transition: background 0.18s var(--glass-ease) !important;
 }
+[data-mj="header"] button[aria-label="menu"] svg {
+  width: 28px !important;
+  height: 28px !important;
+}
 [data-mj="header"] button[aria-label="menu"]:hover {
   background: var(--glass-hover) !important;
 }
 
-/* =========================================================================
-   Fallback â€” browsers without backdrop-filter (use opaque dark glass)
-   ========================================================================= */
 @supports not ((backdrop-filter: blur(1px)) or (-webkit-backdrop-filter: blur(1px))) {
   [data-mj="header-nav-list"],
   .app-ltr-rl0abu,
@@ -598,14 +609,12 @@ aside a,
   }
 }
 
-/* =========================================================================
-   Reduced motion
-   ========================================================================= */
 @media (prefers-reduced-motion: reduce) {
   [data-mj="header-nav-list"] .sl-navlink,
+  [data-mj="header-nav-list"] > button.sl-navlink,
   .app-ltr-rl0abu,
   .app-ltr-rl0abu .sl-navlink,
-  .app-ltr-pri86d .sl-navlink,
+  [data-mj="mobile-nav-list"] .sl-navlink,
   .app-ltr-pri86d button[aria-label="arrow_down"],
   [data-mj="header"] button[aria-label="menu"] {
     transition: none !important;
