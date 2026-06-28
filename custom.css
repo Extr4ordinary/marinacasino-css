@@ -577,19 +577,20 @@ aside a,
 }
 
 [data-mj="header"] button[aria-label="menu"] {
-  width: 44px !important;
-  height: 44px !important;
+  width: 32px !important;
+  height: 32px !important;
+  min-width: 32px !important;
   display: inline-flex !important;
   align-items: center !important;
   justify-content: center !important;
-  border-radius: 12px !important;
+  border-radius: 8px !important;
   border: 1px solid var(--glass-border) !important;
   background: var(--glass-bg-2) !important;
   transition: background 0.18s var(--glass-ease) !important;
 }
 [data-mj="header"] button[aria-label="menu"] svg {
-  width: 28px !important;
-  height: 28px !important;
+  width: 18px !important;
+  height: 18px !important;
 }
 [data-mj="header"] button[aria-label="menu"]:hover {
   background: var(--glass-hover) !important;
@@ -720,8 +721,10 @@ aside a,
     max-width: 90px !important;
   }
   [data-mj="logo"] img {
-    transform: scale(1.2) !important;
-    transform-origin: left center !important;
+    transform: none !important;
+    height: 32px !important;
+    width: auto !important;
+    object-fit: contain !important;
   }
 }
 
