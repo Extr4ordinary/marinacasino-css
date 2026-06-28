@@ -724,3 +724,14 @@ aside a,
     transform-origin: left center !important;
   }
 }
+
+.app-ltr-pri86d a.app-ltr-3860w8 img {
+  transform: scale(1.2) !important;
+  transform-origin: center center !important;
+}
+
+@media (max-width: 768px) {
+  [data-mj="footer-logo"] {
+    display: none !important;
+  }
+}
