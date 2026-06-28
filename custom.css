@@ -679,12 +679,15 @@ aside a,
 }
 [data-mj="widget-fixed-image-banner"] [data-mj="widget-fixed-image-banner-container"] {
   width: auto !important;
-  max-width: 820px !important;
+  max-width: 656px !important;
   height: auto !important;
+  border-radius: 24px !important;
+  backdrop-filter: blur(5px) !important;
+  -webkit-backdrop-filter: blur(5px) !important;
 }
 [data-mj="widget-fixed-image-banner"] img {
   width: 100% !important;
-  max-width: 820px !important;
+  max-width: 656px !important;
   height: auto !important;
   object-fit: contain !important;
 }
